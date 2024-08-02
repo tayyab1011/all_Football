@@ -27,6 +27,12 @@ class _Schedule extends State<Schedule> with TickerProviderStateMixin {
     stream = db.collection('schedule').orderBy('time').snapshots();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();  // Make sure to dispose of the controller
+    super.dispose();
+  }
+
   
   @override
   Widget build(BuildContext context) {
@@ -70,6 +76,12 @@ class _Schedule extends State<Schedule> with TickerProviderStateMixin {
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
+                                  Text(
+                                    snapshot.data!.docs[index]['location'],
+                                    style: TextStyle(
+                                        color: Colors.grey.shade500,
+                                        fontSize: 14.5),
+                                  ),
                                   Text(
                                     snapshot.data!.docs[index]['time'],
                                     style: TextStyle(

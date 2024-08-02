@@ -29,7 +29,7 @@ class _SquadState extends State<Squad> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     stream = db
         .collection('squad')
@@ -38,6 +38,12 @@ class _SquadState extends State<Squad> with TickerProviderStateMixin {
       isEqualTo: widget.teamName,
     )
         .snapshots();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();  // Make sure to dispose of the controller
+    super.dispose();
   }
 
   Widget build(BuildContext context) {

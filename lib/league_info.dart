@@ -1,4 +1,5 @@
 import 'package:all_football/main_screen.dart';
+import 'package:all_football/man_of_the_match.dart';
 import 'package:flutter/material.dart';
 
 import 'most_runs.dart';
@@ -197,6 +198,54 @@ class _LeagueState extends State<League> {
                   ),
                 ),
               ),
+               GestureDetector(
+                onTap: (){
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ManOfTheMatch()));
+                },
+                child: Container(
+                   margin:const EdgeInsets.only(top: 40, left: 35),
+                  width: 120,
+                  height: 100,
+                  child: Material(
+                    color: Colors.grey.shade200,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(13.0),
+                            child:
+                            Image.asset('assets/images/score.png'),
+                          ),
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)),
+                            color: Colors.green,
+                          ),
+                          width: 190,
+                          child: const Padding(
+                            padding: EdgeInsets.all(3.0),
+                            child: Text(
+                              "Man of Match",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              
 
             ],
           ),

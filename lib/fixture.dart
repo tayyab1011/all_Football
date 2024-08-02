@@ -30,11 +30,17 @@ class _Fixture extends State<Fixture> with TickerProviderStateMixin {
     super.initState();
     stream = db.collection('teams').snapshots();
   }
+  
+  @override
+  void dispose() {
+    _controller.dispose();  // Make sure to dispose of the controller
+    super.dispose();
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Teams',
           style: TextStyle(color: Colors.black),
         ),
